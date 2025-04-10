@@ -1,61 +1,142 @@
-# telecleaner
-
-## Introduction and Purpose
-
-**telecleaner** is a simple yet powerful tool designed to help you handle data exports from Telegram. Have you ever exported your Telegram chat history and found yourself overwhelmed by the sheer amount of data? This program allows you to quickly and easily clean up that data by selecting specific users whose messages you want to extract, making it much more manageable and useful.
-
-With **telecleaner**, you can:
-- Select specific users from a list of all participants in your chat export.
-- Extract and save messages from those users into a clean, readable format.
-
-This tool is perfect for organizing your chat history, creating summaries, or analyzing specific conversations.
+## ✅ README.md
 
 ---
 
-## Getting Started
+# Telegram JSON Cleaner
 
-Follow these simple steps to download, set up, and use **telecleaner** on your computer:
+## 1. Introduction and Purpose
 
-### Step 1: Download the Repository
-1. Click the green **Code** button on this page.
-2. Select **Download ZIP**.
-3. Once downloaded, extract the ZIP file to a folder of your choice on your computer.
+### 🧩 Introduction  
+**Telegram JSON Cleaner** is a simple, user-friendly program designed to extract and clean messages from Telegram chat export files (in JSON format). It allows users to visually select specific participants from a chat and filter the conversation based on those selections.
 
-### Step 2: Prepare Your Environment
-Ensure you have Python installed on your computer. **telecleaner** uses Python to run its scripts and requires no advanced setup.
+### 🎯 Purpose & Problem Statement  
+Telegram's exported data includes all messages from all users in a group or private chat. Manually filtering messages from only specific users can be time-consuming and error-prone. This program simplifies that task by offering an interactive way to select users and automatically generate clean text files with only the relevant messages.
 
-### Step 3: Run the Program
-1. Open the folder where you extracted the ZIP file.
-2. Locate the file named `telecleaner.py`.
-3. Double-click the file to launch the program.
-
-The program will guide you through the process of selecting Telegram export files and filtering messages by user.
+### 💡 Value Proposition  
+- No coding required – intuitive interface for user selection  
+- Supports multiple files at once  
+- Fast and efficient extraction  
+- Outputs clean, readable `.txt` files containing only the chosen users' messages
 
 ---
 
-## Use Cases and Examples
+## 2. Dependencies (Required Software/Libraries)
 
-### Use Case 1: Organizing a Group Chat
-Imagine you are part of a busy group chat and want to isolate messages from specific members to review later. Simply:
-1. Export the chat data from Telegram.
-2. Use **telecleaner** to select the participants you’re interested in.
-3. Get a clean, readable file containing only their messages.
+This program uses Python’s built-in libraries and the standard GUI module `tkinter`.
 
-### Use Case 2: Analyzing Your Conversations
-Want to reflect on past conversations with certain friends or colleagues? With **telecleaner**, you can:
-1. Load exported Telegram chats.
-2. Select individual users whose messages you’d like to analyze.
-3. Save their messages in a concise format for easy review.
+### ✅ Required Software
 
----
+| Dependency | Description | Installation |
+|-----------|-------------|--------------|
+| **Python 3.x** | The programming language used to run the program. | [Download Python](https://www.python.org/downloads/) |
+| **tkinter** | Provides the graphical user interface (GUI) used to select users and files. | Comes pre-installed with Python on Windows and macOS. If using Linux and it’s missing, run: `sudo apt-get install python3-tk` |
 
-## Disclaimers and Updates
-- This repository may be updated at any time. Updates could include new features, bug fixes, or other changes.
-- Note that the README file may not always reflect the latest updates to the repository. Be sure to check the code and instructions directly if you encounter any discrepancies.
-- **telecleaner** is provided as-is and does not guarantee any specific results.
+> ⚠️ No additional external libraries or frameworks are required.
 
 ---
 
-## Questions?
-For any questions about how to use **telecleaner**, please review the provided instructions carefully. This program is designed to be intuitive and easy to use, but feel free to experiment and explore its features!
+## 3. Getting Started (Installation & Execution)
 
+### 📥 Step 1: Download the Project
+
+1. Go to the repository page on GitHub.  
+2. Click the green **"Code"** button.  
+3. Select **"Download ZIP"**.  
+4. Extract the ZIP file to any folder on your computer.
+
+### 🧪 Step 2: Run the Program
+
+1. Ensure Python is installed on your system.
+2. Open your terminal or command prompt:
+   - **Windows:** Press `Windows + R`, type `cmd`, press Enter  
+   - **macOS:** Open **Terminal** from Applications  
+   - **Linux:** Use your default terminal
+3. Navigate to the extracted folder using the `cd` command.  
+   Example:
+   ```bash
+   cd path/to/extracted/folder
+   ```
+4. Run the program:
+   ```bash
+   python telegram_cleaner.py
+   ```
+
+> Replace `telegram_cleaner.py` with the actual filename if different.
+
+---
+
+## 4. User Guide (How to Effectively Use the Program)
+
+### 🗂️ Step-by-Step Usage
+
+1. **File Selection:**  
+   - A window will open allowing you to choose one or more `.json` files exported from Telegram.
+   - Select the desired files and click **"Open"**.
+
+2. **User Selection Interface:**  
+   - A graphical window titled **"Select Users"** will appear.
+   - Use checkboxes to select which users’ messages you want to include.
+   - Navigate pages using **Previous** and **Next** buttons if there are many users.
+   - Once done, click the **"Done"** button.
+
+3. **Processing Output:**  
+   - The program processes all selected `.json` files.
+   - It creates a new cleaned `.txt` file for each, in the same folder as the original.
+   - The new files will be named like: `originalfilename_cleaned.txt`
+
+### 📥 Input Format
+
+- One or more **Telegram-exported JSON files**
+- The JSON structure must contain a `"messages"` array with message dictionaries including `"type"`, `"from"`, and `"text"` fields.
+
+### 📤 Output Format
+
+- For each selected file, a plain `.txt` file containing lines formatted as:
+  ```
+  Username: message text
+  ```
+
+> Messages from users not selected will be excluded entirely.
+
+---
+
+## 5. Use Cases and Real-World Examples
+
+### ✅ Use Case 1: Extract Only Admin Messages  
+**Scenario:** A group chat has many users, but you only want to save messages written by the group admin.  
+**Steps:**  
+- Select the JSON file.  
+- Choose only the admin’s name in the selection window.  
+- Output: A text file containing only the admin’s messages.
+
+### ✅ Use Case 2: Create a Conversation Transcript Between Two Users  
+**Scenario:** You want to extract a private back-and-forth between two specific participants in a group.  
+**Steps:**  
+- Select the group JSON file.  
+- Choose both participants in the user selector.  
+- Output: A readable conversation between only those two users.
+
+### ✅ Use Case 3: Archive Personal Messages from Multiple Chats  
+**Scenario:** You want to archive your own messages from several Telegram groups.  
+**Steps:**  
+- Select multiple exported JSON files at once.  
+- Select only your name.  
+- Output: One cleaned `.txt` file per chat, each containing only your messages.
+
+---
+
+## 6. Disclaimer & Important Notices
+
+- This repository and its contents may be updated at any time without notice.  
+- Such updates may render parts of this README obsolete.  
+- The code is provided **"as-is"** with **no guarantees** regarding functionality, reliability, compatibility, or correctness.  
+- Users are responsible for verifying output quality and ensuring compatibility with their systems.
+
+---
+
+## 7. Tone, Style, and Presentation Guidelines
+
+- Clear and simple language throughout  
+- GUI-based interaction for ease of use  
+- Code-based execution kept minimal and user-friendly  
+- Suggest screenshots or GIFs for visual aid if publishing the repository online
